@@ -6,7 +6,7 @@ export type TDatePickerProps = {
   label?: string;
 };
 
-const PHDatePiker = ({ name, label }: TDatePickerProps) => {
+const PHDatePicker = ({ name, label }: TDatePickerProps) => {
   return (
     <div>
       <Controller
@@ -26,4 +26,4 @@ const PHDatePiker = ({ name, label }: TDatePickerProps) => {
   );
 };
 
-export default PHDatePiker;
+export default PHDatePicker;

@@ -2,7 +2,7 @@ import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import PHForm from "../../../components/form/PHForm";
 import PHInput from "../../../components/form/PHInput";
 import { Button, Col, Divider, Form, Input, Row } from "antd";
-import PHDatePiker from "../../../components/form/PHDatePiker";
+import PHDatePicker from "../../../components/form/PHDatePicker";
 import {
   useGetAcademicDepartmentQuery,
   useGetAllSemestersQuery,
@@ -87,7 +87,7 @@ const studentDefaultValues = {
 const CreateStudent = () => {
   const [addStudent, { data, error }] = useAddStudentMutation();
 
-  console.log({ data, error });
+  // console.log({ data, error });
 
   const { data: sData, isLoading: sIsLoading } =
     useGetAllSemestersQuery(undefined);
@@ -142,7 +142,7 @@ const CreateStudent = () => {
               <PHInput type="text" name="gender" label="Middle Name" />
             </Col>
             <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
-              <PHDatePiker name="dateOfBirth" label="Date Of Birth" />
+              <PHDatePicker name="dateOfBirth" label="Date Of Birth" />
             </Col>
             <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
               <PHInput type="text" name="bloodGroup" label="Blood Group" />
