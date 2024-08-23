@@ -32,7 +32,6 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   if (result?.error?.status === 404) {
-    //@ts-ignore
     toast.error(result.error.data.message);
   }
   if (result?.error?.status === 401) {
@@ -68,6 +67,6 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
-  tagTypes: ["semester", "course"],
+  tagTypes: ["semester", "courses"],
   endpoints: () => ({}),
 });

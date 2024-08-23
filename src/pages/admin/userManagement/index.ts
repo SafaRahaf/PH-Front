@@ -1,8 +1,8 @@
 import CreateAdmin from "./CreateAdmin";
 import CreateFaculty from "./CreateFaculty";
-import CreateStudent from "./CreateStudent";
 import StudentData from "./StudentData";
 import StudentDetails from "./StudentDetails";
+import CreateStudent from "./CreateStudent";
 
 export {
   CreateAdmin,

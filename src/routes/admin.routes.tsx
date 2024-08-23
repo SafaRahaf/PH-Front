@@ -1,19 +1,11 @@
-import {
-  AcademicDepartment,
-  AcademicFaculty,
-  AcademicSemester,
-  CreateAcademicDepartment,
-  CreateAcademicFaculty,
-  CreateAcademicSemester,
-} from "../pages/admin/academicManagement";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import {
-  Course,
+  Courses,
   CreateCourse,
   OfferCourse,
   OfferedCourses,
-  RegesteredSemsters,
-  SemesterRegestration,
+  RegisteredSemesters,
+  SemesterRegistration,
 } from "../pages/admin/courseManagement";
 import {
   CreateAdmin,
@@ -22,8 +14,16 @@ import {
   StudentData,
   StudentDetails,
 } from "../pages/admin/userManagement";
+import {
+  AcademicDepartment,
+  AcademicFaculty,
+  AcademicSemester,
+  CreateAcademicDepartment,
+  CreateAcademicFaculty,
+  CreateAcademicSemester,
+} from "../pages/admin/academicManagement";
 
-export const adminPaths: any = [
+export const adminPaths = [
   {
     name: "Dashboard",
     path: "dashboard",
@@ -68,6 +68,20 @@ export const adminPaths: any = [
     name: "User Management",
     children: [
       {
+        name: "Create Student",
+        path: "create-student",
+        element: <CreateStudent />,
+      },
+      {
+        name: "Students",
+        path: "students-data",
+        element: <StudentData />,
+      },
+      {
+        path: "student-data/:studentId",
+        element: <StudentDetails />,
+      },
+      {
         name: "Create Admin",
         path: "create-admin",
         element: <CreateAdmin />,
@@ -77,19 +91,11 @@ export const adminPaths: any = [
         path: "create-faculty",
         element: <CreateFaculty />,
       },
+
       {
-        name: "Create Student",
-        path: "create-student",
+        name: "Create Member",
+        path: "create-member",
         element: <CreateStudent />,
-      },
-      {
-        name: "Student Data",
-        path: "students-data",
-        element: <StudentData />,
-      },
-      {
-        path: "student-data/:studentId",
-        element: <StudentDetails />,
       },
     ],
   },
@@ -97,14 +103,14 @@ export const adminPaths: any = [
     name: "Course Management",
     children: [
       {
-        name: "Semester Regestration",
-        path: "semester-regestration",
-        element: <SemesterRegestration />,
+        name: "Semester Registration",
+        path: "semester-registration",
+        element: <SemesterRegistration />,
       },
       {
-        name: "Regestered Semester",
-        path: "regestered-semester",
-        element: <RegesteredSemsters />,
+        name: "Registered Semesters",
+        path: "registered-semesters",
+        element: <RegisteredSemesters />,
       },
       {
         name: "Create Course",
@@ -112,9 +118,9 @@ export const adminPaths: any = [
         element: <CreateCourse />,
       },
       {
-        name: "Course",
-        path: "course",
-        element: <Course />,
+        name: "Courses",
+        path: "courses",
+        element: <Courses />,
       },
       {
         name: "Offer Course",

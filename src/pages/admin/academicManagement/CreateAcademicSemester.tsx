@@ -1,15 +1,15 @@
-import { FieldValues, SubmitHandler } from "react-hook-form";
-import PHForm from "../../../components/form/PHForm";
-import { Button, Col, Flex } from "antd";
-import PHSelect from "../../../components/form/PHSelect";
-import { semesterOptions } from "../../../constants/semester";
-import { monthOptions } from "../../../constants/global";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { FieldValues, SubmitHandler } from 'react-hook-form';
+import PHForm from '../../../components/form/PHForm';
+import { Button, Col, Flex } from 'antd';
+import PHSelect from '../../../components/form/PHSelect';
+import { semesterOptions } from '../../../constants/semester';
+import { monthOptions } from '../../../constants/global';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import { academicSemesterSchema } from "../../../schemas/academicManagement.schema";
-import { useAddAcademicSemesterMutation } from "../../../redux/features/admin/academicManagement.api";
-import { toast } from "sonner";
-import { TResponse } from "../../../types/global";
+import { academicSemesterSchema } from '../../../schemas/academicManagement.schema';
+import { useAddAcademicSemesterMutation } from '../../../redux/features/admin/academicManagement.api';
+import { toast } from 'sonner';
+import { TResponse } from '../../../types/global';
 
 const currentYear = new Date().getFullYear();
 const yearOptions = [0, 1, 2, 3, 4].map((number) => ({
@@ -21,7 +21,7 @@ const CreateAcademicSemester = () => {
   const [addAcademicSemester] = useAddAcademicSemesterMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const toastId = toast.loading("Creating...");
+    const toastId = toast.loading('Creating...');
 
     const name = semesterOptions[Number(data?.name) - 1]?.label;
 
@@ -34,16 +34,15 @@ const CreateAcademicSemester = () => {
     };
 
     try {
-      // @ts-ignore
       const res = (await addAcademicSemester(semesterData)) as TResponse;
       console.log(res);
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId });
       } else {
-        toast.success("Semester created", { id: toastId });
+        toast.success('Semester created', { id: toastId });
       }
     } catch (err) {
-      toast.error("Something went wrong", { id: toastId });
+      toast.error('Something went wrong', { id: toastId });
     }
   };
 

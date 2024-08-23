@@ -5,15 +5,15 @@ import {
   Table,
   TableColumnsType,
   TableProps,
-} from "antd";
-import { useState } from "react";
-import { TQueryParam, TStudent } from "../../../types";
-import { useGetAllStudentsQuery } from "../../../redux/features/admin/userManagement.api";
-import { Link } from "react-router-dom";
+} from 'antd';
+import { useState } from 'react';
+import { TQueryParam, TStudent } from '../../../types';
+import { useGetAllStudentsQuery } from '../../../redux/features/admin/userManagement.api';
+import { Link } from 'react-router-dom';
 
 export type TTableData = Pick<
   TStudent,
-  "fullName" | "id" | "email" | "contactNo"
+  'fullName' | 'id' | 'email' | 'contactNo'
 >;
 
 const StudentData = () => {
@@ -24,15 +24,14 @@ const StudentData = () => {
     isLoading,
     isFetching,
   } = useGetAllStudentsQuery([
-    // { name: "limit", value: 3 },
-    { name: "page", value: page },
-    { name: "sort", value: "id" },
+    { name: 'page', value: page },
+    { name: 'sort', value: 'id' },
     ...params,
   ]);
 
-  const metaData = studentData?.meta;
+  console.log({ isLoading, isFetching });
 
-  // console.log({ isLoading, isFetching });
+  const metaData = studentData?.meta;
 
   const tableData = studentData?.data?.map(
     ({ _id, fullName, id, email, contactNo }) => ({
@@ -46,30 +45,31 @@ const StudentData = () => {
 
   const columns: TableColumnsType<TTableData> = [
     {
-      title: "Name",
-      key: "name",
-      dataIndex: "fullName",
+      title: 'Name',
+      key: 'name',
+      dataIndex: 'fullName',
+    },
+
+    {
+      title: 'Roll No.',
+      key: 'id',
+      dataIndex: 'id',
     },
     {
-      title: "Roll No",
-      key: "id",
-      dataIndex: "id",
+      title: 'Email',
+      key: 'email',
+      dataIndex: 'email',
     },
     {
-      title: "Email",
-      key: "email",
-      dataIndex: "email",
+      title: 'Contact No.',
+      key: 'contactNo',
+      dataIndex: 'contactNo',
     },
     {
-      title: "Contact Number",
-      key: "contactNo",
-      dataIndex: "contactNo",
-    },
-    {
-      title: "Action",
-      key: "x",
+      title: 'Action',
+      key: 'x',
       render: (item) => {
-        // console.log(item);
+        console.log(item);
         return (
           <Space>
             <Link to={`/admin/student-data/${item.key}`}>
@@ -80,25 +80,25 @@ const StudentData = () => {
           </Space>
         );
       },
-      width: "1%",
+      width: '1%',
     },
   ];
 
-  const onChange: TableProps<TTableData>["onChange"] = (
+  const onChange: TableProps<TTableData>['onChange'] = (
     _pagination,
     filters,
     _sorter,
     extra
   ) => {
-    if (extra.action === "filter") {
+    if (extra.action === 'filter') {
       const queryParams: TQueryParam[] = [];
 
       filters.name?.forEach((item) =>
-        queryParams.push({ name: "name", value: item })
+        queryParams.push({ name: 'name', value: item })
       );
 
       filters.year?.forEach((item) =>
-        queryParams.push({ name: "year", value: item })
+        queryParams.push({ name: 'year', value: item })
       );
 
       setParams(queryParams);
@@ -116,9 +116,9 @@ const StudentData = () => {
       />
       <Pagination
         current={page}
+        onChange={(value) => setPage(value)}
         pageSize={metaData?.limit}
         total={metaData?.total}
-        onChange={(page) => setPage(page)}
       />
     </>
   );

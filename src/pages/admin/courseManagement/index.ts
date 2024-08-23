@@ -1,15 +1,15 @@
-import Course from "./Course";
-import RegesteredSemsters from "./RegesteredSemster";
+import SemesterRegistration from "./SemesterRegistration";
+import RegisteredSemesters from "./RegisteredSemesters";
 import CreateCourse from "./CreateCourse";
-import SemesterRegestration from "./SemesterRegestration";
+import Courses from "./Courses";
 import OfferCourse from "./OfferCourse";
 import OfferedCourses from "./OfferedCourses";
 
 export {
-  Course,
-  RegesteredSemsters,
+  SemesterRegistration,
+  RegisteredSemesters,
   CreateCourse,
-  SemesterRegestration,
+  Courses,
   OfferCourse,
   OfferedCourses,
 };
